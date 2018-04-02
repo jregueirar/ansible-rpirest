@@ -15,7 +15,15 @@
   action: apt name=sense-hat state=present
   when: ansible_lsb.id == "Raspbian"
 
-- name: Syncronyzing pirest-sense-hat code
+- name: Create APP Directory {{ app_name }}
+  file:
+    path: "{{ app_path }}"
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    state: directory
+    mode: 0755
+
+- name: Syncronyzing rpirest code
   synchronize: src="{{ app_src }}" dest="{{ app_path }}"
   tags:
     - app_code
@@ -24,6 +32,16 @@
     - django collect_static
     - restart pirest-sense-hat
     - django installtasks
+
+#- git:
+#      repo: ssh://git@gitlab.com:jregueirar/rpirest.git
+#      dest: {{ app_path }}
+#      version: v.401
+#notify:
+#  - django migrate
+#  - django collect_static
+#  - restart pirest-sense-hat
+#  #  - django installtasks
 
 - name: Executing pip3 -r requirements.txt
   pip:

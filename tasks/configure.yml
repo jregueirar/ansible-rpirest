@@ -15,7 +15,7 @@
 - name: Supervisor | pirest-sense-hat config
   template:
     src: templates/supervisor.pirest_sense_hat.conf.j2
-    dest: /etc/supervisor/conf.d/pirest_sense_hat.conf
+    dest: "/etc/supervisor/conf.d/{{app_name}}.conf"
     owner: "{{ app_user }}"
     group: "{{ app_user }}"
     mode: 0664
@@ -60,7 +60,7 @@
     owner: "{{ app_user }}"
     group: "{{ app_group }}"
     state: directory
-    mode: 0644
+    mode: 0755
 
 - name: Django | Checking Static files for {{ app_name }}
   file:

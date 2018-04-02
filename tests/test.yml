@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: all
+  remote_user: pi
+  become: yes
   roles:
-    - pirest-sense-hat
+    - ansible-rpirest
