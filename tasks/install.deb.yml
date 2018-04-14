@@ -10,7 +10,6 @@
   tags:
     - installation
 
-
 - name: Installing sense-hat package
   action: apt name=sense-hat state=present
   when: ansible_lsb.id == "Raspbian"
@@ -33,19 +32,7 @@
     - restart pirest-sense-hat
     - django installtasks
 
-#- git:
-#      repo: ssh://git@gitlab.com:jregueirar/rpirest.git
-#      dest: {{ app_path }}
-#      version: v.401
-#notify:
-#  - django migrate
-#  - django collect_static
-#  - restart pirest-sense-hat
-#  #  - django installtasks
-
 - name: Executing pip3 -r requirements.txt
   pip:
     requirements: "{{ app_path }}/requirements.txt"
     executable: pip3
-
-
