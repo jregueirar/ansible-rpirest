@@ -12,9 +12,6 @@ galaxy_info:
     - IOT
     - APIREST
     - Raspberrypi
-  
-  categories:
-    - IOT
 
 dependencies:
   - { role: geerlingguy.nginx, tags: [ 'nginx'] }
