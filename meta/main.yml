@@ -1,8 +1,7 @@
 galaxy_info:
   author: "Jonás Regueira Rodríguez"
-  description: your description
-  company: your company (optional)
-  license: license (GPLv2, CC-BY, etc)
+  description: Quick and easy rpirest installer: The API REST for your IOT projects with a Raspberry PI
+  license: GPLv3
   min_ansible_version: 1.2
   
   platforms:
