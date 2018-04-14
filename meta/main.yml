@@ -143,8 +143,8 @@ galaxy_info:
   #  - xenial
   #  - yakkety
   - name: Raspbian
-      versions:
-        - stretch
+    versions:
+      - stretch
   #  - etch
   #  - jessie
   #  - lenny
