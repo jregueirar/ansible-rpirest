@@ -13,4 +13,3 @@ galaxy_info:
     - Raspberrypi
 
 dependencies:
-  - { role: geerlingguy.nginx, tags: [ 'nginx'] }

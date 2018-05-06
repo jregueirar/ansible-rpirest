@@ -3,4 +3,4 @@
   remote_user: pi
   become: yes
   roles:
-    - ansible-rpirest
+    - { role: ansible-rpirest, rpirest_sync_from_git: False }

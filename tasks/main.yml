@@ -1,17 +1,19 @@
 ---
-- debug: var=ansible_os_family
+#- debug: var=ansible_os_family
+
+#- debug:
+#    msg: "Role dir is {{ role_path }}"
 
 - include: install.deb.yml
   when: ansible_os_family == 'Debian'
   tags: [installation]
 
+- include: install_dht_library.yml
+  tags: [installation]
+
 - include: configure.yml
   tags: [configuration]
 
-#- include: grafana.yml
-#  tags: [grafana, configuration]
-
-- include: dht22.yml
-  when: ansible_lsb.id == 'Raspbian'
-  tags: [dht]
+- include: nginx.yml
+  tags: [nginx]
 

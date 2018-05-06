@@ -1,6 +1,6 @@
 ---
 - name: restart pirest-sense-hat
-  command: supervisorctl restart {{app_name}}
+  command: supervisorctl restart {{rpirest_app_name}}
 
 - name: reread supervisor
   command: "supervisorctl update"
@@ -8,17 +8,19 @@
 - name: django collect_static
   command: python3 manage.py collectstatic --noinput
   args:
-    chdir: "{{ app_path }}"
+    chdir: "{{ rpirest_app_path }}"
   become: true
 
 - name: django installtasks
   command: python3 manage.py installtasks
   args:
-    chdir: "{{ app_path }}"
+    chdir: "{{ rpirest_app_path }}"
   become: true
 
 - name: django migrate
   command: python3 manage.py migrate
   args:
-    chdir: "{{ app_path }}"
+    chdir: "{{ rpirest_app_path }}"
 
+- name: restart nginx
+  service: name=nginx state=restarted

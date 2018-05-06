@@ -3,16 +3,16 @@
 
 ### APP Configuration
 # The path where pirest-sense-hat will be downloaded and installed.
-app_statics: "{{ app_path }}/collect_statics"
-app_user: root
-app_group: root
-app_port: 8000
-app_dir_logs: "/var/log/{{ app_name }}"
+rpirest_app_statics: "{{ rpirest_app_path }}/collect_statics"
+
+# Git repo. It is used when rpirest_sync_from_git is True
+rpirest_app_repo: "https://github.com/jregueirar/rpirest.git"
 
 ### NGINX Configuration
-nginx_remove_default_vhost: true
+nginx_remove_default_vhost: trued
 nginx_sites_available: /etc/nginx/sites-available
 nginx_sites_enabled: /etc/nginx/sites-enabled
+nginx_conf_template: "nginx.conf.j2"
 
 ### Values for dht22 sensor (pi_attach == 'dht22')
 dht22_library_path: "/opt/adafruit_python_dht"

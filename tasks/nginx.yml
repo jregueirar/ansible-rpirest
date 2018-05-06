@@ -1,0 +1,24 @@
+- name: Nginx | Setting Nginx
+  template:
+    src: templates/nginx.conf.j2
+    dest: "{{nginx_sites_available}}/../nginx.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart nginx
+
+- name: Nginx | Setting site available {{ rpirest_app_name }}
+  template:
+    src: templates/nginx.pirest_sense_hat.j2
+    dest: "{{nginx_sites_available}}/{{rpirest_app_name}}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart nginx
+
+- name: Nginx | Enabling site {{ rpirest_app_name }}
+  file: src={{nginx_sites_available}}/{{rpirest_app_name}} dest={{nginx_sites_enabled}}/{{rpirest_app_name}} state=link
+  notify: restart nginx
+
+- name: Nginx | Ensure is started and enabled to start at boot.
+  service: name=nginx state=started enabled=yes

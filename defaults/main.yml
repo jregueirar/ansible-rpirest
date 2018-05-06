@@ -1,18 +1,22 @@
 ---
-app_name: "rpirest"
-app_src: "~/git/rpirest/"
-app_path: "/opt/{{app_name}}"
+rpirest_app_name: "rpirest"
+rpirest_app_path: "/opt/{{rpirest_app_name}}"
+rpirest_app_dir_logs: "/var/log/{{rpirest_app_name }}"
+rpirest_app_user: root
+rpirest_app_group: root
+rpirest_app_port: 8000
+
+# rpirest_sync_from_git: True =>  Sync code from git repository
+# rpirest_sync_from_git: False => Sync code from a local path
+rpirest_sync_from_git: True
+
+# It is used when rpirest_sync_from_git is false
+rpirest_app_src_path: "~/git/rpirest/"
 # defaults file for pirest-sense-hat
 
-device_attached: sense_hat # Posible values: sense-hat, dht22, dht11 or am2302
+rpirest_device_attached: sense_hat # Posible values: sense-hat, dht22, dht11 or am2302
 
 ### APP DJANGO SETTINGS VARIABLES
-api_rest_url: "/api/v1/"
-django_debug: False
-sense_hat: True
-
-graphite_url: "http://{{ ansible_fqdn }}:8080"
-carbon_conf_path: "/etc/carbon"
-
-### APP values for attach device: dht22, dht11 or am2302
-dht_gpio_pin: 4
+rpirest_api_root: "/api/v1/"
+rpirest_django_debug: False
+rpirest_sense_hat: True

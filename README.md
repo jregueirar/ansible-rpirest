@@ -1,6 +1,6 @@
 # ansible-rpirest
 
-Ansible role to setup and deploy project [pirest-sense-hat](https://github.com/jregueirar/pirest-sense-hat)
+Ansible role to setup and deploy the project [rpirest](https://github.com/jregueirar/rpirest)
 
 ansible-rpirest/tests> ansible-playbook -i inventory test.yml
 
@@ -12,7 +12,6 @@ ansible-rpirest/tests> ansible-playbook -i inventory test.yml
 
 ## Dependencies
 
-- geerlingguy.nginx
 
 ## Example Playbook
 
@@ -24,9 +23,10 @@ ansible-rpirest/tests> ansible-playbook -i inventory test.yml
 	 
 ## TAGS
 
+  * installation: To install all the packages, dependencies and code.
   * app_code: To deploy only change in the app code. This not include changes in the requirements or packages dependencies. 
   * configuration: To deploy only change in configuration
-  * installation: To install all the packages, dependencies and code.
+  * nginx: To install and configure only nginx
 
 
 License

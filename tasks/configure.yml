@@ -1,70 +1,41 @@
 ---
-
 - name: Include OS-specific variables.
   include_vars: no-raspbian.yml
   when: ansible_lsb.id != 'Raspbian'
 
-- name: Carbon | Configure carbon-cache storage schema
-  template:
-    src: templates/carbon-storage-schemas.conf.j2
-    dest: "{{ carbon_conf_path }}/storage-schemas.conf"
-    mode: 0664
-    owner: root
-    group: root
-
 - name: Supervisor | pirest-sense-hat config
   template:
     src: templates/supervisor.pirest_sense_hat.conf.j2
-    dest: "/etc/supervisor/conf.d/{{app_name}}.conf"
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
+    dest: "/etc/supervisor/conf.d/{{rpirest_app_name}}.conf"
+    owner: "{{ rpirest_app_user }}"
+    group: "{{ rpirest_app_user }}"
     mode: 0664
     force: yes
   notify: reread supervisor
+#- name: Ensure nginx is started and enabled to start at boot.
+#service: name=nginx state=started enabled=yes
 
-- name: Nginx | Setting Nginx
-  template:
-    src: templates/nginx.conf.j2
-    dest: "{{nginx_sites_available}}/../nginx.conf"
-    owner: root
-    group: root
-    mode: 0644
-  notify: restart nginx
-
-- name: Nginx | Setting site available {{ app_name }}
-  template:
-    src: templates/nginx.pirest_sense_hat.j2
-    dest: "{{nginx_sites_available}}/{{app_name}}"
-    owner: root
-    group: root
-    mode: 0644
-  notify: restart nginx
-
-- name: Nginx | Enablin site {{ app_name }}
-  file: src={{nginx_sites_available}}/{{app_name}} dest={{nginx_sites_enabled}}/{{app_name}} state=link
-  notify: restart nginx
-
-- name: Django | Copy Django's settings_local for APP {{ app_name }}
+- name: Django | Copy Django's settings_local for APP {{ rpirest_app_name }}
   template:
     src: templates/settings_local.py.j2
-    dest: "{{ app_path }}/{{app_name}}/settings_local.py"
-    owner: "{{ app_user }}"
-    group: "{{ app_group }}"
+    dest: "{{ rpirest_app_path }}/{{rpirest_app_name}}/settings_local.py"
+    owner: "{{ rpirest_app_user }}"
+    group: "{{ rpirest_app_group }}"
     mode: 0664
     force: yes
   notify: restart pirest-sense-hat
 
-- name: Create log directory for {{ app_name }}
+- name: Create log directory for {{ rpirest_app_name }}
   file:
-    path: "{{ app_dir_logs }}"
-    owner: "{{ app_user }}"
-    group: "{{ app_group }}"
+    path: "{{ rpirest_app_dir_logs }}"
+    owner: "{{ rpirest_app_user }}"
+    group: "{{ rpirest_app_group }}"
     state: directory
     mode: 0755
 
-- name: Django | Checking Static files for {{ app_name }}
+- name: Django | Checking Static files for {{ rpirest_app_name }}
   file:
-    path: "{{ app_statics }}"
+    path: "{{ rpirest_app_statics }}"
     state: directory
     mode: 0644
   notify: django collect_static
