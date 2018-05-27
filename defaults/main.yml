@@ -12,7 +12,6 @@ rpirest_sync_from_git: True
 
 # It is used when rpirest_sync_from_git is false
 rpirest_app_src_path: "~/git/rpirest/"
-# defaults file for pirest-sense-hat
 
 rpirest_device_attached: sense_hat # Posible values: sense-hat, dht22, dht11 or am2302
 

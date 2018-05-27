@@ -9,6 +9,7 @@ ansible-rpirest/tests> ansible-playbook -i inventory test.yml
 
 ## Role Variables
 
+You have a complete list in defaults/main.yml. 
 
 ## Dependencies
 
@@ -28,13 +29,13 @@ ansible-rpirest/tests> ansible-playbook -i inventory test.yml
   * configuration: To deploy only change in configuration
   * nginx: To install and configure only nginx
 
-
+ 
 License
 -------
 
 GPLv3
 
-Author Information
+ Author Information
 ------------------
 
 - [jregueirar](https://github.com/jregueirar)

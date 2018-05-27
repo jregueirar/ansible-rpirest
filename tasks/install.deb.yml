@@ -11,7 +11,7 @@
     - installation
 
 - name: Installing sense-hat package
-  action: apt name=sense-hat state=present
+  action: apt name=python3-sense-hat state=present
   when: ansible_lsb.id == "Raspbian"
 
 - name: Create APP Directory {{ rpirest_app_name }}
@@ -22,23 +22,18 @@
     state: directory
     mode: 0755
 
-- name: Syncronyzing rpirest code
-  git: 
-    repo: "{{ rpirest_app_repo }}"
-    dest: "{{ rpirest_app_path }}"
-    force: yes
-    clone: yes
-  when: rpirest_sync_from_git
-  tags:
-    - app_code
-  notify:
-    - django migrate
-    - django collect_static
-    - restart pirest-sense-hat
-    - django installtasks
+- name: Copying Pip3 install requirements
+  copy:
+        src: "{{ role_path }}/files/requirements.txt"
+        dest: "{{rpirest_app_path}}/requirements.txt"
+
+- name: Executing pip3 -r requirements.txt
+  pip:
+    requirements: "{{ rpirest_app_path }}/requirements.txt"
+    executable: pip3
 
 - name: Syncronyzing rpirest code from disk
-  synchronize: src="{{ rpirest_app_src_path }}" dest="{{ rpirest_app_path }}"
+  synchronize: src="{{ rpirest_app_src_path }}/" dest="{{ rpirest_app_path }}"
   when: rpirest_sync_from_git == False
   tags:
     - app_code
@@ -49,7 +44,3 @@
     - django installtasks
 
 
-- name: Executing pip3 -r requirements.txt
-  pip:
-    requirements: "{{ rpirest_app_path }}/requirements.txt"
-    executable: pip3
