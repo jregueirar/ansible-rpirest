@@ -13,3 +13,4 @@ galaxy_info:
     - Raspberrypi
 
 dependencies:
+    - {role: holms.fqdn, tags: ['fqdn']}
