@@ -1,2 +1,2 @@
-inventory
+tests/inventory
 *.retry

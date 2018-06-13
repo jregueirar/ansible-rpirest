@@ -7,6 +7,7 @@
     - supervisor
     - nginx
     - python3-numpy
+    - libopenjp2-7
   tags:
     - installation
 
