@@ -28,6 +28,7 @@ You have a complete list in defaults/main.yml.
   * app_code: To deploy only change in the app code. This not include changes in the requirements or packages dependencies. 
   * configuration: To deploy only change in configuration
   * nginx: To install and configure only nginx
+  * fqdn: To change de hostname
 
  
 License
