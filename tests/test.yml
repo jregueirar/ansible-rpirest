@@ -2,5 +2,6 @@
 - hosts: all
   remote_user: pi
   become: yes
+  strategy: linear
   roles:
           - { role: ansible-rpirest, rpirest_sync_from_git: False , rpirest_app_src_path: "/home/jonas/git/rpirest"}

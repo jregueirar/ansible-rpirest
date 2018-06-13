@@ -1,3 +1,8 @@
+- name: Nginx | Remove default conf if exist
+  file: 
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
 - name: Nginx | Setting Nginx
   template:
     src: templates/nginx.conf.j2
