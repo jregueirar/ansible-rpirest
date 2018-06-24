@@ -14,6 +14,6 @@
 - include: configure.yml
   tags: [configuration]
 
-- include: nginx.yml
-  tags: [nginx]
+- include: async_tasks.yml
+  tags: [async_tasks]
 

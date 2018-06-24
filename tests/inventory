@@ -1,2 +1,3 @@
-rpi01 ansible_user=pi ansible_ssh_private_key_file=~/.ssh/id_rsa
-rpi02 ansible_user=pi ansible_ssh_private_key_file=~/.ssh/id_rsa
+#rpi01 ansible_user=pi ansible_ssh_private_key_file=~/.ssh/id_rsa
+#rpi02 ansible_user=pi ansible_ssh_private_key_file=~/.ssh/id_rsa
+rpi3 ansible_user=pi 

@@ -1,0 +1,16 @@
+- name: Asyncronous Tasks | Installing packages
+  action: apt name={{ item }} state=present
+  with_items:
+    - redis-server
+  tags:
+    - installation
+
+- name: Supervisor | rpirest-asyncronous-tasks config
+  template:
+    src: templates/supervisor.rpirest_tasks.conf.j2
+    dest: "/etc/supervisor/conf.d/rpirest_tasks.conf"
+    owner: "{{ rpirest_app_user }}"
+    group: "{{ rpirest_app_user }}"
+    mode: 0664
+    force: yes
+  notify: reread supervisor
