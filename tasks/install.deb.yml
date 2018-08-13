@@ -45,4 +45,12 @@
     - restart pirest-sense-hat
     - django installtasks
 
-
+- name: Syncronyzing rpirest code from git repository
+  git:
+    repo: "{{rpirest_git_repo}}"
+    dest: "{{rpirest_app_path}}"
+    version: "{{rpirest_code_version}}"
+    force: yes
+  when: rpirest_sync_from_git == True
+  tags:
+    - app_code

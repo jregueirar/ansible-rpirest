@@ -50,3 +50,5 @@ Unipath==1.1
 vine==1.1.4
 wcwidth==0.1.7
 zope.interface==4.5.0
+gunicorn
+django-celery-results

@@ -9,10 +9,17 @@ ansible-rpirest/tests> ansible-playbook -i inventory test.yml
 
 ## Role Variables
 
-You have a complete list in defaults/main.yml. 
+You have a complete list in defaults/main.yml. The more useful variables can be:
+
+  * For develop's environment or massive deploys:
+    * rpirest_sync_from_git: True/False. Default value is True. False
+  if you want syncronize code from disk path.
+    * rpirest_app_src_path. Path with the rpirest's code.
+
 
 ## Dependencies
 
+None
 
 ## Example Playbook
 
