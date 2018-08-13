@@ -9,6 +9,8 @@ rpirest_app_port: 8000
 # rpirest_sync_from_git: True =>  Sync code from git repository
 # rpirest_sync_from_git: False => Sync code from a local path
 rpirest_sync_from_git: True
+rpirest_git_repo: https://gitlab+deploy-token-11492:yP8CixzdcLuT_KEFLFAV@gitlab.com/jregueirar/rpirest
+rpirest_code_version: "HEAD"
 
 # It is used when rpirest_sync_from_git is false
 rpirest_app_src_path: "~/git/rpirest/"

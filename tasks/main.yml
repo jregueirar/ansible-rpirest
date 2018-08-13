@@ -6,14 +6,22 @@
 
 - include: install.deb.yml
   when: ansible_os_family == 'Debian'
-  tags: [installation]
+  tags:
+    - installation
 
 - include: install_dht_library.yml
-  tags: [installation]
+  tags:
+    - installation
 
 - include: configure.yml
-  tags: [configuration]
+  tags: 
+    - configuration
+
+- include: nginx.yml
+  tags:
+    - nginx
 
 - include: async_tasks.yml
-  tags: [async_tasks]
+  tags: 
+    - async_tasks
 
