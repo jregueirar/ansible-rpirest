@@ -1,0 +1,31 @@
+- name: Installing packages
+  action: apt name={{ item }} state=present
+  with_items:
+    - mpd
+    - mpc
+  tags:
+    - installation
+
+- name: Pip install python-mpd2
+  pip:
+    executable: pip3
+    name: python-mpd2
+
+- name: Create miscellaneous directory
+  file:
+    path: "{{ rpirest_app_path}}/miscellaneous"
+    owner: "{{ rpirest_app_user }}"
+    group: "{{ rpirest_app_group }}"
+    state: directory
+    mode: 0755
+
+
+- name: Django | Copy Django's settings_local for APP {{ rpirest_app_name }}
+  template:
+    src: templates/demo_mpd.sh.j2
+    dest: "{{ rpirest_app_path }}/miscellaneous/demo_mpd.sh"
+    owner: "{{ rpirest_app_user }}"
+    group: "{{ rpirest_app_group }}"
+    mode: 0744
+    force: yes
+

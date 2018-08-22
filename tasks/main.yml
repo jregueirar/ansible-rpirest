@@ -13,6 +13,11 @@
   tags:
     - installation
 
+- include: mpd.yml
+  tags: 
+    - installation
+    - mpd
+
 - include: configure.yml
   tags: 
     - configuration
