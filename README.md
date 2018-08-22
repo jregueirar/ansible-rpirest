@@ -36,6 +36,7 @@ None
   * configuration: To deploy only change in configuration
   * nginx: To install and configure only nginx
   * fqdn: To change de hostname
+  * mpd: Tasks related to the API REST of MPD (Music Player Daemon). 
 
  
 License
