@@ -8,7 +8,7 @@
     - nginx
     - python3-numpy
     - libopenjp2-7
-    - redis-server 
+    - redis-server
   tags:
     - installation
 
@@ -27,10 +27,21 @@
     state: directory
     mode: 0755
 
+- name: Create log directory for {{ rpirest_app_name }}
+  file:
+    path: "{{ rpirest_app_dir_logs }}"
+    owner: "{{ rpirest_app_user }}"
+    group: "{{ rpirest_app_group }}"
+    state: directory
+    mode: 0755
+
+
 - name: Copying Pip3 install requirements
   copy:
         src: "{{ role_path }}/files/requirements.txt"
         dest: "{{rpirest_app_path}}/requirements.txt"
+#  notify:
+#    - pip3 -r requirements.txt
 
 - name: Executing pip3 -r requirements.txt
   pip:
@@ -57,3 +68,8 @@
   when: rpirest_sync_from_git == True
   tags:
     - app_code
+
+- name: pip3 -r requirements.txt
+  pip:
+    requirements: "{{ rpi_dash_path }}/requirements.txt"
+    executable: pip3

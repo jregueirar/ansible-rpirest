@@ -5,3 +5,47 @@ API_REST_URL = "{{ rpirest_api_root }}"
 
 DEBUG = {{ rpirest_django_debug }}
 SENSE_HAT = {{ rpirest_sense_hat }}
+
+# Security
+ALLOWED_HOSTS = ['{{ rpirest_django_allowed_hosts }}']
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+          'simple': {
+              'format': '[%(asctime)s] %(levelname)s %(message)s',
+              'datefmt': '%Y-%m-%d %H:%M:%S'
+          },
+          'verbose': {
+              'format': '[%(asctime)s] %(levelname)s [%(name)s:%(pathname)s:%(lineno)d] %(message)s',
+              'datefmt': '%Y-%m-%d %H:%M:%S'
+          },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '{{ rpirest_app_dir_logs }}/rpirest.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'rpirest': {
+            'handlers': ['file'],
+            'level': '{{ rpirest_loglevel}}',
+            'propagate': True,
+        },
+        'apirest_sensehat': {
+            'handlers': ['file'],
+            'level': '{{ rpirest_sensehat_loglevel}}',
+            'propagate': True,
+        },
+        'apirest_dht': {
+            'handlers': ['file'],
+            'level': '{{ rpirest_dht_loglevel }}',
+            'propagate': True,
+        },
+    },
+}

@@ -4,7 +4,8 @@ rpirest_app_path: "/opt/{{rpirest_app_name}}"
 rpirest_app_dir_logs: "/var/log/{{rpirest_app_name }}"
 rpirest_app_user: root
 rpirest_app_group: root
-rpirest_app_port: 8000
+rpirest_app_port: 8001
+rpirest_nginx_port: 8081
 
 # rpirest_sync_from_git: True =>  Sync code from git repository
 # rpirest_sync_from_git: False => Sync code from a local path
@@ -17,7 +18,11 @@ rpirest_app_src_path: "~/git/rpirest/"
 
 rpirest_device_attached: sense_hat # Posible values: sense-hat, dht22, dht11 or am2302
 
-### APP DJANGO SETTINGS VARIABLES
+### APP DJANGO SETTINGS_LOCAL VARIABLES
 rpirest_api_root: "/api/v1/"
 rpirest_django_debug: False
 rpirest_sense_hat: True
+rpirest_django_allowed_hosts: "*"
+rpirest_loglevel: "DEBUG"
+rpirest_sensehat_loglevel: "DEBUG"
+rpirest_dht_loglevel: "DEBUG"

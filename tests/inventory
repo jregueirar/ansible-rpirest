@@ -1,4 +1,9 @@
 # Asyncronous tasks
-rpi01 ansible_user=pi ansible_ssh_private_key_file=~/.ssh/id_rsa
+all:
+    hosts:
+        rpi01:
+            ansible_user:"pi"
+            ansible_ssh_private_key_file:"~/.ssh/id_rsa"
+            rpi_dash_rpirest_url:"http://rpi01:8081/api/v1/"
 #rpi02 ansible_user=pi ansible_ssh_private_key_file=~/.ssh/id_rsa
-#rpi03 ansible_user=pi 
+#rpi03 ansible_user=pi

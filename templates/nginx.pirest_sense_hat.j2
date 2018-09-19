@@ -6,7 +6,7 @@ upstream {{ rpirest_app_name }}_server {
 }
 
 server {
-    listen 80 default_server;
+    listen {{ rpirest_nginx_port }} default_server;
 
 
     root {{ rpirest_app_path }}/collected_static;

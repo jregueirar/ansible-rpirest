@@ -23,15 +23,9 @@
     group: "{{ rpirest_app_group }}"
     mode: 0664
     force: yes
-  notify: restart pirest-sense-hat
-
-- name: Create log directory for {{ rpirest_app_name }}
-  file:
-    path: "{{ rpirest_app_dir_logs }}"
-    owner: "{{ rpirest_app_user }}"
-    group: "{{ rpirest_app_group }}"
-    state: directory
-    mode: 0755
+  notify:
+    - restart pirest-sense-hat
+    - django collect_static
 
 - name: Django | Checking Static files for {{ rpirest_app_name }}
   file:
