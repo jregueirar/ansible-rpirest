@@ -10,7 +10,7 @@ rpirest_nginx_port: 8081
 # rpirest_sync_from_git: True =>  Sync code from git repository
 # rpirest_sync_from_git: False => Sync code from a local path
 rpirest_sync_from_git: True
-rpirest_git_repo: https://gitlab.com/jregueirar/rpirest
+rpirest_git_repo: https://gitlab.com/jregueirar/rpirest.git
 rpirest_code_version: "HEAD"
 
 # It is used when rpirest_sync_from_git is false

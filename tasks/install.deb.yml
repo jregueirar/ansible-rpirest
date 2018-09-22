@@ -35,9 +35,8 @@
     state: directory
     mode: 0755
 
-
-- name: Copying Pip3 install requirements
-  copy:
+- name: Syncronyzing Pip3 requirements
+  synchronize:
         src: "{{ role_path }}/files/requirements.txt"
         dest: "{{rpirest_app_path}}/requirements.txt"
 #  notify:
@@ -68,8 +67,3 @@
   when: rpirest_sync_from_git == True
   tags:
     - app_code
-
-- name: pip3 -r requirements.txt
-  pip:
-    requirements: "{{ rpi_dash_path }}/requirements.txt"
-    executable: pip3
