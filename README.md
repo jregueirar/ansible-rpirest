@@ -1,6 +1,7 @@
 # ansible-rpirest
 
-Ansible role to setup and deploy the project [rpirest](https://github.com/jregueirar/rpirest)
+Role Ansible que despliega y configura el framework [RpiREST](https://gitlab.com/jregueirar/rpirest?nav_source=navbar)
+en una Raspberry Pi. 
 
 ansible-rpirest/tests> ansible-playbook -i inventory test.yml
 
